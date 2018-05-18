@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/score_page.dart';
 import 'package:quiz_app/ui/answerButton.dart';
 import 'package:quiz_app/ui/overlay.dart';
 import 'package:quiz_app/ui/question_text.dart';
@@ -55,7 +56,10 @@ class _QuizPageState extends State<QuizPage> {
         overlay == true ?  new CorrectWrongOverlay(
             isCorrect,
                 (){
-                  print("hello");
+                  if(quiz.length==questionNumber){
+                    Navigator.of(context).pushAndRemoveUntil(new MaterialPageRoute(builder: (BuildContext context)=>new ScorePage(quiz.score,quiz.length)),(Route route) => route==null);
+                    return;
+                  }
                   currentQuestion=quiz.nextQuestion;
                   this.setState((){
                     overlay=false;

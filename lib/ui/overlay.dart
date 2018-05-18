@@ -36,6 +36,13 @@ class _CorrectWrongOverlayState extends State<CorrectWrongOverlay> with SingleTi
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _iconAnimationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Material(
       color: Colors.black54,
